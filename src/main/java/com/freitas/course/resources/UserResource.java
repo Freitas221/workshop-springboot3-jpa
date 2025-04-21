@@ -16,7 +16,7 @@ import com.freitas.course.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource {
 
-	@Autowired
+	@Autowired 
 	private UserService service;
 	
 	@GetMapping
@@ -26,7 +26,7 @@ public class UserResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) { 
+	public ResponseEntity<User> findById(@PathVariable Long id) {
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
