@@ -8,6 +8,7 @@ public enum OrderStatus {
 	DELIVERED(4),
 	CANCELED(5);
 	
+
 	private int code;
 	
 	private OrderStatus(int code) {
@@ -19,11 +20,13 @@ public enum OrderStatus {
 	}
 	
 	public static OrderStatus valueOf(int code) {
-		for(OrderStatus value : OrderStatus.values()) {
+		for(OrderStatus value: OrderStatus.values()){
 			if(value.getCode() == code) {
 				return value;
 			}
 		}
-		throw new IllegalArgumentException("Invalid OrderStatus code");
+		throw new IllegalArgumentException(" //In this special case the constructor would be private.");
+		
 	}
+	
 }
