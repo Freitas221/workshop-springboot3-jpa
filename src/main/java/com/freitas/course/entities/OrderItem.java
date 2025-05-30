@@ -3,6 +3,7 @@ package com.freitas.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.freitas.course.entities.pk.OrderItemPK;
@@ -16,7 +17,7 @@ import jakarta.persistence.Table;
 public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@EmbeddedId
+	@EmbeddedId //This ID is coming from an @Embeddable entity
 	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
@@ -25,7 +26,7 @@ public class OrderItem implements Serializable {
 	public OrderItem() {
 		
 	}
-
+	//The values ​​of Order and product are not declared outside the constructor, as they will come from the entity OrderItemPK
 	public OrderItem(Order order, Product product, Integer quantity, Double price) {
 		super();
 		id.setOrder(order);

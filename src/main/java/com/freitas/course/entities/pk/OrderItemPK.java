@@ -10,7 +10,9 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Embeddable
+//This specific class does not have constructors.
+
+@Embeddable //Indicates that the class is not a complete entity, but rather a component that can be reused and embedded within other entities.
 public class OrderItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,11 +37,11 @@ public class OrderItemPK implements Serializable {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	@Override
+	
 	public int hashCode() {
 		return Objects.hash(order, product);
 	}
-	@Override
+	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

@@ -3,6 +3,7 @@ package com.freitas.course.entities;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+import java.lang.Override;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

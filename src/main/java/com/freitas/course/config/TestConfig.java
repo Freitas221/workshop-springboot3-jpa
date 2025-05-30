@@ -40,7 +40,6 @@ public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private OrderItemRepository orderItemRepository;
 
-	@Override
 	public void run(String... args) throws Exception {
 		
 		Category cat1 = new Category(null, "Electronics");

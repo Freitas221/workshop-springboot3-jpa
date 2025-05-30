@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.lang.Override;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -52,14 +53,14 @@ public class Category implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
 	
 	public Set<Product> getProducts() {
 		return products;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
 	@Override
