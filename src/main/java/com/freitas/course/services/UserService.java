@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.freitas.course.entities.User;
@@ -12,11 +13,19 @@ import com.freitas.course.repositories.UserRepository;
 import com.freitas.course.services.exceptions.DatabaseException;
 import com.freitas.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TransactionRequiredException;
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 	
 	@Autowired
 	private UserRepository repository;
+	
+    @PersistenceContext
+    private EntityManager entityManager;
 	
 	public List<User> findAll() {
 		return repository.findAll();
@@ -30,11 +39,13 @@ public class UserService {
 	public User insert (User obj) {
 		return repository.save(obj);
 	}
-	
+
+	@Transactional
 	public void delete(Long id) {
 	    try {
 	        repository.deleteById(id); 
-	    } catch (ResourceNotFoundException e) {
+	        entityManager.flush();
+	    } catch (EmptyResultDataAccessException e) {
 	        throw new ResourceNotFoundException(id);
 	    } catch (DataIntegrityViolationException e) {
 	    	throw new DatabaseException(e.getMessage());
