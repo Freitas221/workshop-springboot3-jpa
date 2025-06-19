@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.freitas.course.entities.User;
@@ -40,12 +39,11 @@ public class UserService {
 		return repository.save(obj);
 	}
 
-	@Transactional
 	public void delete(Long id) {
 	    try {
 	        repository.deleteById(id); 
 	        entityManager.flush();
-	    } catch (EmptyResultDataAccessException e) {
+	    } catch (TransactionRequiredException e) {
 	        throw new ResourceNotFoundException(id);
 	    } catch (DataIntegrityViolationException e) {
 	    	throw new DatabaseException(e.getMessage());
