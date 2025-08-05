@@ -19,11 +19,11 @@
 
 | Método | Endpoint         | Descrição               |
 |--------|------------------|-------------------------|
-| GET    | /api/user   | Lista todos usuários    |
-| GET    | /api/user/{id} | Busca usuário por ID    |
-| POST   | /api/user    | Cria um novo usuário    |
-| PUT    | /api/user/{id} | Atualiza usuário        |
-| DELETE | /api/user/{id} | Remove usuário          |
+| GET    | /api/user   | Lista todos usuários |
+| GET    | /api/user/{id} | Busca usuário por ID |
+| POST   | /api/user    | Cria um novo usuário |
+| PUT    | /api/user/{id} | Atualiza usuário |
+| DELETE | /api/user/{id} | Remove usuário |
 
 ---
 
