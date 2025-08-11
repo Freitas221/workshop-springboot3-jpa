@@ -50,7 +50,6 @@ public class UserService {
 	    }
 	}  
 	
-	//FAZER UM GIT PARA O UPDATE
 	public User update(Long id, User obj) {
 		try {
 			User entity = repository.getReferenceById(id);
