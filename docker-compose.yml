@@ -1,10 +1,11 @@
 services:
   app:
-    build: .
+    container_name: course-app
     image: marcosrocha2/course2.0
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
+      DATABASE_URL: ${DATABASE_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}

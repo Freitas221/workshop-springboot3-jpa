@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.freitas.course.entities.User;
@@ -15,7 +16,7 @@ import com.freitas.course.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TransactionRequiredException;
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserService {
@@ -41,14 +42,14 @@ public class UserService {
 
 	public void delete(Long id) {
 	    try {
-	        repository.deleteById(id); 
+	        repository.deleteById(id);
 	        entityManager.flush();
-	    } catch (TransactionRequiredException e) {
+	    } catch (EmptyResultDataAccessException e) {
 	        throw new ResourceNotFoundException(id);
 	    } catch (DataIntegrityViolationException e) {
-	    	throw new DatabaseException(e.getMessage());
+	        throw new DatabaseException(e.getMessage());
 	    }
-	}  
+	}
 	
 	public User update(Long id, User obj) {
 		try {
