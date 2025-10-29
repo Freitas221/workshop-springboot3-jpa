@@ -23,4 +23,11 @@ public class CategoryService {
 		Optional<Category> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	public Category insert(Category obj ) {
+		repository.findByName(obj.getName())
+	    .ifPresent(existing -> {
+	        throw new ResourceAlreadyExistsException("Categoria já cadastrada: " + obj.getName());
+	    });
+	}
 }
