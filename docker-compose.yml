@@ -1,11 +1,12 @@
 services:
   app:
     container_name: course-app
-    image: marcosrocha2/course2.0
+    image: course-test
+    build: .
     ports:
       - "8080:8080"
     environment:
       SPRING_PROFILES_ACTIVE: prod
       DATABASE_URL: ${DATABASE_URL}
-      DB_USERNAME: ${DB_USERNAME}
+      DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
