@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.freitas.course.entities.Category;
 import com.freitas.course.repositories.CategoryRepository;
+import com.freitas.course.services.exceptions.ResourceAlreadyExistsException;
 
 @Service
 public class CategoryService {
@@ -29,5 +30,7 @@ public class CategoryService {
 	    .ifPresent(existing -> {
 	        throw new ResourceAlreadyExistsException("Categoria já cadastrada: " + obj.getName());
 	    });
+		
+		return obj;
 	}
 }
