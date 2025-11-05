@@ -1,7 +1,7 @@
 services:
   app:
     container_name: course-app
-    image: course-test
+    image: marcosrocha2/course-db
     build: .
     ports:
       - "8080:8080"
