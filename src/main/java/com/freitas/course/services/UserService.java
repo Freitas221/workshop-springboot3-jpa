@@ -16,6 +16,7 @@ import com.freitas.course.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 
 @Service
@@ -51,6 +52,7 @@ public class UserService {
 	    }
 	}
 	
+	@Transactional
 	public User update(Long id, User obj) {
 		try {
 			User entity = repository.getReferenceById(id);
